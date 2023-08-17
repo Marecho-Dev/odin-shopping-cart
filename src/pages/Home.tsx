@@ -1,7 +1,7 @@
 import { Text } from "@mantine/core";
 import { HeroImageRight } from "../components/HeroImageRight";
 import { Carousel } from "@mantine/carousel";
-import { NetflixCarousel} from '../components/NetflixCarousel';
+import { NetflixCarousel } from "../components/NetflixCarousel";
 
 export function Home() {
   return (
@@ -40,8 +40,11 @@ export function Home() {
         </Carousel.Slide>
         {/* ...other slides */}
       </Carousel>
-      <Text>Browse By Categories</Text>
+      <Text ta="center" fw={500} fz="xl">
+        Browse By Categories
+      </Text>
       <NetflixCarousel></NetflixCarousel>
+      <div>Test</div>
     </>
   );
 }

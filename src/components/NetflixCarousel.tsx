@@ -1,57 +1,131 @@
-import { useCallback, useEffect, useState } from "react";
-import { Carousel, Embla } from "@mantine/carousel";
-import { Progress, rem } from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
+import { useMediaQuery } from "@mantine/hooks";
+import {
+  createStyles,
+  Paper,
+  Text,
+  Title,
+  useMantineTheme,
+  rem,
+} from "@mantine/core";
 
-export function NetflixCarousel() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [embla, setEmbla] = useState<Embla | null>(null);
+const useStyles = createStyles((theme) => ({
+  card: {
+    height: rem(250),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
 
-  const handleScroll = useCallback(() => {
-    if (!embla) return;
-    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
-    setScrollProgress(progress * 100);
-  }, [embla, setScrollProgress]);
+  title: {
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 900,
+    color: theme.white,
+    lineHeight: 1.2,
+    fontSize: rem(32),
+    marginTop: theme.spacing.xs,
+  },
 
-  useEffect(() => {
-    if (embla) {
-      embla.on("scroll", handleScroll);
-      handleScroll();
-    }
-  }, [embla]);
+  category: {
+    color: theme.white,
+    opacity: 0.7,
+    fontWeight: 700,
+    textTransform: "uppercase",
+  },
+}));
+
+interface CardProps {
+  image: string;
+  title: string;
+  category: string;
+}
+
+function Card({ image, title, category }: CardProps) {
+  const { classes } = useStyles();
 
   return (
-    <>
-      <Carousel
-        dragFree
-        slideSize="50%"
-        slideGap="md"
-        height={200}
-        getEmblaApi={setEmbla}
-        initialSlide={2}
-      >
-        <Carousel.Slide>
-          <div className="testSlide">Action</div>
-        </Carousel.Slide>
-        <Carousel.Slide>2</Carousel.Slide>
-        <Carousel.Slide>3</Carousel.Slide>
-        <Carousel.Slide>4</Carousel.Slide>
-        <Carousel.Slide>5</Carousel.Slide>
-        <Carousel.Slide>6</Carousel.Slide>
-        <Carousel.Slide>7</Carousel.Slide>
-        <Carousel.Slide>8</Carousel.Slide>
-        <Carousel.Slide>9</Carousel.Slide>
-        <Carousel.Slide>10</Carousel.Slide>
-      </Carousel>
-      <Progress
-        value={scrollProgress}
-        styles={{
-          bar: { transitionDuration: "0ms" },
-          root: { maxWidth: rem(320) },
-        }}
-        size="sm"
-        mt="xl"
-        mx="auto"
-      />
-    </>
+    <Paper
+      shadow="md"
+      p="xl"
+      radius="md"
+      sx={{ backgroundImage: `url(${image})` }}
+      className={classes.card}
+    >
+      <div>
+        <Text className={classes.category} size="xs">
+          {category}
+        </Text>
+        <Title order={3} className={classes.title}>
+          {title}
+        </Title>
+      </div>
+    </Paper>
+  );
+}
+
+const data = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+    title: "",
+    category: "Action",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+    title: "",
+    category: "Multiplayer",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+    title: "",
+    category: "nature",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+    title: "",
+    category: "nature",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+    title: "",
+    category: "tourism",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1582721478779-0ae163c05a60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+    title: "",
+    category: "nature",
+  },
+];
+
+export function NetflixCarousel() {
+  const theme = useMantineTheme();
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const slides = data.map((item) => (
+    <Carousel.Slide key={item.title}>
+      <Card {...item} />
+    </Carousel.Slide>
+  ));
+
+  return (
+    <Carousel
+      loop
+      dragFree
+      slideSize="25%"
+      breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: rem(2) }]}
+      slideGap="xl"
+      align="start"
+      slidesToScroll={mobile ? 1 : 2}
+      style={{ marginLeft: "16px", marginRight: "16px" }}
+    >
+      {slides}
+    </Carousel>
   );
 }
