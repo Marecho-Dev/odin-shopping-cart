@@ -40,7 +40,13 @@ export function Home() {
         </Carousel.Slide>
         {/* ...other slides */}
       </Carousel>
-      <Text ta="center" fw={500} fz="xl">
+      <Text
+        ta="center"
+        fw={700}
+        variant="gradient"
+        sx={{ fontFamily: "consolas", fontSize: "3rem" }}
+        gradient={{ from: "red", to: "orange" }}
+      >
         Browse By Categories
       </Text>
       <NetflixCarousel></NetflixCarousel>

@@ -1,27 +1,34 @@
-import { createStyles, Container, Title, Text, Button, rem } from '@mantine/core';
+import {
+  createStyles,
+  Container,
+  Title,
+  Text,
+  Button,
+  rem,
+} from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   root: {
-    height: '85vh',
-    backgroundColor: '#11284b',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    height: "85vh",
+    backgroundColor: "#11284b",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     paddingTop: `calc(${theme.spacing.xl} * 3)`,
     paddingBottom: `calc(${theme.spacing.xl} * 3)`,
   },
 
   inner: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: "flex",
+    justifyContent: "space-between",
 
-    [theme.fn.smallerThan('md')]: {
-      flexDirection: 'column',
+    [theme.fn.smallerThan("md")]: {
+      flexDirection: "column",
     },
   },
 
   image: {
-    [theme.fn.smallerThan('md')]: {
-      display: 'none',
+    [theme.fn.smallerThan("md")]: {
+      display: "none",
     },
   },
 
@@ -30,7 +37,7 @@ const useStyles = createStyles((theme) => ({
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
     marginRight: `calc(${theme.spacing.xl} * 3)`,
 
-    [theme.fn.smallerThan('md')]: {
+    [theme.fn.smallerThan("md")]: {
       marginRight: 0,
     },
   },
@@ -43,8 +50,8 @@ const useStyles = createStyles((theme) => ({
     maxWidth: rem(500),
     fontSize: rem(48),
 
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
+    [theme.fn.smallerThan("md")]: {
+      maxWidth: "100%",
       fontSize: rem(34),
       lineHeight: 1.15,
     },
@@ -56,8 +63,8 @@ const useStyles = createStyles((theme) => ({
     maxWidth: rem(500),
     fontFamily: `consolas, ${theme.fontFamily}`,
 
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
+    [theme.fn.smallerThan("md")]: {
+      maxWidth: "100%",
     },
   },
 
@@ -67,18 +74,17 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `consolas, ${theme.fontFamily}`,
     fontSize: rem(22),
 
-    [theme.fn.smallerThan('md')]: {
-      width: '100%',
+    [theme.fn.smallerThan("md")]: {
+      width: "100%",
     },
   },
 }));
 
-export function HeroImageRight({title,description,imageUrl}) {
+export function HeroImageRight({ title, description, imageUrl }) {
   const { classes } = useStyles();
 
   const dynamicStyles = {
-    backgroundImage:
-      `linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(${imageUrl})`
+    backgroundImage: `linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #020617 70%), url(${imageUrl})`,
   };
   return (
     <div className={classes.root} style={dynamicStyles}>
@@ -90,10 +96,10 @@ export function HeroImageRight({title,description,imageUrl}) {
                 component="span"
                 inherit
                 variant="gradient"
-                gradient={{ from: 'red', to: 'orange' }}
+                gradient={{ from: "red", to: "orange" }}
               >
                 {title}
-              </Text>{' '}
+              </Text>{" "}
             </Title>
 
             <Text className={classes.description} mt={30}>
@@ -102,7 +108,7 @@ export function HeroImageRight({title,description,imageUrl}) {
 
             <Button
               variant="gradient"
-              gradient={{ from: 'red', to: 'orange' }}
+              gradient={{ from: "red", to: "orange" }}
               size="xl"
               className={classes.control}
               mt={40}
