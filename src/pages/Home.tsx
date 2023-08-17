@@ -69,34 +69,34 @@ export function Home() {
         gutterXl={50}
         style={{ margin: 20 }}
       >
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={3} xl={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col xs={12} md={4} lg={2}>
           <GameCard></GameCard>
         </Grid.Col>
       </Grid>
