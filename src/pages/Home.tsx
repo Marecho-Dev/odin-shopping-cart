@@ -1,8 +1,9 @@
-import { Text } from "@mantine/core";
+import { Grid, Text } from "@mantine/core";
 import { HeroImageRight } from "../components/HeroImageRight";
 import { Carousel } from "@mantine/carousel";
 import { NetflixCarousel } from "../components/NetflixCarousel";
-
+import "../pages/Home.css";
+import { GameCard } from "../components/GameCard";
 export function Home() {
   return (
     <>
@@ -46,11 +47,44 @@ export function Home() {
         variant="gradient"
         sx={{ fontFamily: "consolas", fontSize: "3rem" }}
         gradient={{ from: "red", to: "orange" }}
+        style={{ margin: 50 }}
       >
         Browse By Categories
       </Text>
       <NetflixCarousel></NetflixCarousel>
-      <div>Test</div>
+      <Text
+        ta="center"
+        fw={700}
+        variant="gradient"
+        sx={{ fontFamily: "segoe", fontSize: "3rem" }}
+        gradient={{ from: "red", to: "orange" }}
+        style={{ margin: 50 }}
+      >
+        Popular
+      </Text>
+      <Grid
+        gutter={5}
+        gutterXs="md"
+        gutterMd="xl"
+        gutterXl={50}
+        style={{ margin: 50 }}
+      >
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+      </Grid>
     </>
   );
 }

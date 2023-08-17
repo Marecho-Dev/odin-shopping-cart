@@ -1,0 +1,8 @@
+.product-container {
+  color: black;
+  width: 100vw;
+  height: 50vh;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}

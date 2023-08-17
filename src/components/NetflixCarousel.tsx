@@ -123,7 +123,7 @@ export function NetflixCarousel() {
       slideGap="xl"
       align="start"
       slidesToScroll={mobile ? 1 : 2}
-      style={{ marginLeft: "16px", marginRight: "16px" }}
+      style={{ marginLeft: "50px", marginRight: "50px" }}
     >
       {slides}
     </Carousel>
