@@ -1,4 +1,10 @@
 import { Text } from "@mantine/core";
+import { HeroImageRight } from "../components/HeroImageRight";
 export function Home() {
-  return <Text>Home</Text>;
+  return (
+    <>
+      <HeroImageRight></HeroImageRight>
+      <Text>Home</Text>
+    </>
+  );
 }
