@@ -4,7 +4,7 @@ import { Home } from "./pages/Home";
 import { Store } from "./pages/Store";
 import { About } from "./pages/About";
 import { HeaderSimple } from "./components/HeaderSimple";
-
+import "./App.css";
 export default function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>

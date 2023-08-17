@@ -56,7 +56,7 @@ export function Home() {
         ta="center"
         fw={700}
         variant="gradient"
-        sx={{ fontFamily: "segoe", fontSize: "3rem" }}
+        sx={{ fontFamily: "consolas", fontSize: "3rem" }}
         gradient={{ from: "red", to: "orange" }}
         style={{ margin: 50 }}
       >
@@ -67,8 +67,23 @@ export function Home() {
         gutterXs="md"
         gutterMd="xl"
         gutterXl={50}
-        style={{ margin: 50 }}
+        style={{ margin: 20 }}
       >
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <GameCard></GameCard>
+        </Grid.Col>
         <Grid.Col span={3}>
           <GameCard></GameCard>
         </Grid.Col>
