@@ -10,9 +10,9 @@ export default function App() {
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <HeaderSimple
         links={[
-          { link: "http://localhost:5175/", label: "Home" },
-          { link: "http://localhost:5175/Store", label: "Store" },
-          { link: "http://localhost:5175/About", label: "About" },
+          { link: "/", label: "Home" },
+          { link: "/Store", label: "Store" },
+          { link: "/About", label: "About" },
         ]}
       ></HeaderSimple>
       <Routes>

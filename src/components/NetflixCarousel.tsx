@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Carousel, Embla } from '@mantine/carousel';
-import { Progress, rem } from '@mantine/core';
+import { useCallback, useEffect, useState } from "react";
+import { Carousel, Embla } from "@mantine/carousel";
+import { Progress, rem } from "@mantine/core";
 
 export function NetflixCarousel() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -14,7 +14,7 @@ export function NetflixCarousel() {
 
   useEffect(() => {
     if (embla) {
-      embla.on('scroll', handleScroll);
+      embla.on("scroll", handleScroll);
       handleScroll();
     }
   }, [embla]);
@@ -29,7 +29,9 @@ export function NetflixCarousel() {
         getEmblaApi={setEmbla}
         initialSlide={2}
       >
-        <Carousel.Slide>1</Carousel.Slide>
+        <Carousel.Slide>
+          <div className="testSlide">Action</div>
+        </Carousel.Slide>
         <Carousel.Slide>2</Carousel.Slide>
         <Carousel.Slide>3</Carousel.Slide>
         <Carousel.Slide>4</Carousel.Slide>
@@ -42,7 +44,10 @@ export function NetflixCarousel() {
       </Carousel>
       <Progress
         value={scrollProgress}
-        styles={{ bar: { transitionDuration: '0ms' }, root: { maxWidth: rem(320) } }}
+        styles={{
+          bar: { transitionDuration: "0ms" },
+          root: { maxWidth: rem(320) },
+        }}
         size="sm"
         mt="xl"
         mx="auto"
