@@ -1,6 +1,8 @@
 import { Text } from "@mantine/core";
 import { HeroImageRight } from "../components/HeroImageRight";
 import { Carousel } from "@mantine/carousel";
+import { NetflixCarousel} from '../components/NetflixCarousel';
+
 export function Home() {
   return (
     <>
@@ -31,14 +33,15 @@ export function Home() {
         </Carousel.Slide>
         <Carousel.Slide>
           <HeroImageRight
-          title="Remnant 2"
-          description="Remnant II pits survivors of humanity against new deadly creatures and god-like bosses across terrifying worlds. Play solo or co-op with two other friends to explore the depths of the unknown to stop an evil from destroying reality itself."
-          imageUrl="https://media.rawg.io/media/games/347/3478db948d4f25d40da7c22c0fd1039c.jpg"
+            title="Remnant 2"
+            description="Remnant II pits survivors of humanity against new deadly creatures and god-like bosses across terrifying worlds. Play solo or co-op with two other friends to explore the depths of the unknown to stop an evil from destroying reality itself."
+            imageUrl="https://media.rawg.io/media/games/347/3478db948d4f25d40da7c22c0fd1039c.jpg"
           ></HeroImageRight>
         </Carousel.Slide>
         {/* ...other slides */}
       </Carousel>
-      <Text>Home</Text>
+      <Text>Browse By Categories</Text>
+      <NetflixCarousel></NetflixCarousel>
     </>
   );
 }
