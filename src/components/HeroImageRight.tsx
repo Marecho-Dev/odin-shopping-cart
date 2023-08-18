@@ -44,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: theme.white,
-    fontFamily: `roboto, ${theme.fontFamily}`,
+    fontFamily: `${theme.fontFamily}`,
     fontWeight: 900,
     lineHeight: 1.05,
     maxWidth: rem(500),
@@ -61,7 +61,7 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
     opacity: 0.75,
     maxWidth: rem(500),
-    fontFamily: `roboto, ${theme.fontFamily}`,
+    fontFamily: `${theme.fontFamily}`,
 
     [theme.fn.smallerThan("md")]: {
       maxWidth: "100%",
@@ -71,7 +71,7 @@ const useStyles = createStyles((theme) => ({
   control: {
     paddingLeft: rem(50),
     paddingRight: rem(50),
-    fontFamily: `roboto, ${theme.fontFamily}`,
+    fontFamily: `${theme.fontFamily}`,
     fontSize: rem(22),
 
     [theme.fn.smallerThan("md")]: {

@@ -36,7 +36,7 @@ export function Home() {
       <Text
         fw={100}
         variant="gradient"
-        sx={{ fontFamily: "Roboto", fontSize: "3rem" }}
+        sx={{ fontSize: "3rem" }}
         gradient={{ from: "white", to: "white" }}
         style={{ margin: 50 }}
       >
@@ -46,7 +46,7 @@ export function Home() {
       <Text
         fw={100}
         variant="gradient"
-        sx={{ fontFamily: "roboto", fontSize: "3rem" }}
+        sx={{ fontSize: "3rem" }}
         gradient={{ from: "white", to: "white" }}
         style={{ margin: 50 }}
       >
