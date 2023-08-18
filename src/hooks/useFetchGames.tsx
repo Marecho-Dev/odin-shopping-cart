@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 
 export function useFetchGames() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const apiKey = import.meta.env.VITE_MY_API_KEY.trim();
   useEffect(() => {
-    fetch("/api/products")
+    fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.results);
+        console.log(data.results);
         setLoading(false);
       })
       .catch((error) => {
@@ -17,7 +18,7 @@ export function useFetchGames() {
         setLoading(false);
       });
   }, []);
-
+  console.log(data);
   return { data, error, loading };
 }
 
