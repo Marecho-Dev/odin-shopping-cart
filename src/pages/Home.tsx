@@ -34,22 +34,20 @@ export function Home() {
         ))}
       </Carousel>
       <Text
-        ta="center"
-        fw={700}
+        fw={100}
         variant="gradient"
-        sx={{ fontFamily: "consolas", fontSize: "3rem" }}
-        gradient={{ from: "red", to: "orange" }}
+        sx={{ fontFamily: "Roboto", fontSize: "3rem" }}
+        gradient={{ from: "white", to: "white" }}
         style={{ margin: 50 }}
       >
         Browse By Categories
       </Text>
       <NetflixCarousel></NetflixCarousel>
       <Text
-        ta="center"
-        fw={700}
+        fw={100}
         variant="gradient"
-        sx={{ fontFamily: "consolas", fontSize: "3rem" }}
-        gradient={{ from: "red", to: "orange" }}
+        sx={{ fontFamily: "roboto", fontSize: "3rem" }}
+        gradient={{ from: "white", to: "white" }}
         style={{ margin: 50 }}
       >
         Popular

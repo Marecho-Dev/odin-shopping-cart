@@ -44,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: theme.white,
-    fontFamily: `consolas, ${theme.fontFamily}`,
+    fontFamily: `roboto, ${theme.fontFamily}`,
     fontWeight: 900,
     lineHeight: 1.05,
     maxWidth: rem(500),
@@ -61,7 +61,7 @@ const useStyles = createStyles((theme) => ({
     color: theme.white,
     opacity: 0.75,
     maxWidth: rem(500),
-    fontFamily: `consolas, ${theme.fontFamily}`,
+    fontFamily: `roboto, ${theme.fontFamily}`,
 
     [theme.fn.smallerThan("md")]: {
       maxWidth: "100%",
@@ -71,7 +71,7 @@ const useStyles = createStyles((theme) => ({
   control: {
     paddingLeft: rem(50),
     paddingRight: rem(50),
-    fontFamily: `consolas, ${theme.fontFamily}`,
+    fontFamily: `roboto, ${theme.fontFamily}`,
     fontSize: rem(22),
 
     [theme.fn.smallerThan("md")]: {
@@ -96,7 +96,7 @@ export function HeroImageRight({ title, description, imageUrl }) {
                 component="span"
                 inherit
                 variant="gradient"
-                gradient={{ from: "red", to: "orange" }}
+                gradient={{ from: "white", to: "white" }}
               >
                 {title}
               </Text>{" "}
@@ -107,13 +107,19 @@ export function HeroImageRight({ title, description, imageUrl }) {
             </Text>
 
             <Button
-              variant="gradient"
-              gradient={{ from: "red", to: "orange" }}
+              uppercase
+              variant="white"
+              // gradient={{from:"white",to:"white"}}
               size="xl"
+              radius="xs"
+              fw={700}
+              w={135}
+              style={{ color: "black", paddingLeft: 5, paddingRight: 5 }}
               className={classes.control}
               mt={40}
+              compact
             >
-              Get started
+              More Info
             </Button>
           </div>
         </div>
