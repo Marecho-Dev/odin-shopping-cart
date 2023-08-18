@@ -113,13 +113,19 @@ export function HeroImageRight({ title, description, imageUrl }) {
               size="xl"
               radius="xs"
               fw={700}
-              w={135}
-              style={{ color: "black", paddingLeft: 5, paddingRight: 5 }}
+              w={100}
+              style={{
+                color: "black",
+                paddingLeft: 5,
+                paddingRight: 5,
+                paddingTop: 5,
+                paddingBottom: 5,
+              }}
               className={classes.control}
               mt={40}
               compact
             >
-              More Info
+              SHOP
             </Button>
           </div>
         </div>
