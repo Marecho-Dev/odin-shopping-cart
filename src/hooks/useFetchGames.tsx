@@ -9,12 +9,20 @@ export function useFetchGames() {
     fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
-        setData(data.results);
-        console.log(data.results);
+        const gamePromises = data.results.map((game) => {
+          return fetch(
+            `https://api.rawg.io/api/games/${game.id}?key=${apiKey}`
+          ).then((res) => res.json());
+        });
+
+        return Promise.all(gamePromises);
+      })
+      .then((detailedGameData) => {
+        setData(detailedGameData);
         setLoading(false);
       })
-      .catch((error) => {
-        setError(error);
+      .catch((err) => {
+        setError(err);
         setLoading(false);
       });
   }, []);
