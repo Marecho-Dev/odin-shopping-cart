@@ -9,7 +9,7 @@ import {
 
 const useStyles = createStyles((theme) => ({
   root: {
-    height: "96vh",
+    height: "80vh",
     backgroundColor: "#11284b",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -102,7 +102,7 @@ export function HeroImageRight({ title, description, imageUrl }) {
               </Text>{" "}
             </Title>
 
-            <Text className={classes.description} mt={30}>
+            <Text className={classes.description} mt={30} lineClamp={10}>
               {description}
             </Text>
 

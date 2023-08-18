@@ -5,6 +5,7 @@ export function useFetchGames() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const apiKey = import.meta.env.VITE_MY_API_KEY.trim();
+  console.log(apiKey);
   useEffect(() => {
     fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
       .then((response) => response.json())
