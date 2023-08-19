@@ -17,6 +17,15 @@ export function Home() {
     error: genresError,
     loading: genresLoading,
   } = useFetchGenres();
+
+  if (gamesLoading) {
+    return <div style={{ color: "white" }}>Loading...</div>; // or <Spinner />
+  }
+
+  if (gamesError) {
+    return <div style={{ color: "white" }}>Error: {gamesError.message}</div>;
+  }
+
   return (
     <>
       <Carousel
