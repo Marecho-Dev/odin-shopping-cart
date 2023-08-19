@@ -22,10 +22,11 @@ export function GameCard({ title, description, imageUrl }) {
         With Fjord Tours you can explore more of the magical fjord landscapes
         with tours and activities on and around the fjords of Norway
       </Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Book classic tour now
-      </Button>
+      <center>
+        <Button variant="light" color="indigo" mt="md" radius="xs">
+          ADD TO CART
+        </Button>
+      </center>
     </Card>
   );
 }
