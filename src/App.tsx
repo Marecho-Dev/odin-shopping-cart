@@ -6,7 +6,15 @@ import { About } from "./pages/About";
 import { HeaderSimple } from "./components/HeaderSimple";
 import "./App.css";
 import { GamesProvider } from "./context/gameContext";
+import { GenresProvider } from "./context/genresContext";
+import { useEffect } from "react";
 export default function App() {
+  useEffect(() => {
+    console.log("App mounted");
+    return () => {
+      console.log("App unmounted");
+    };
+  }, []);
   return (
     <MantineProvider
       withGlobalStyles
@@ -31,11 +39,13 @@ export default function App() {
           ]}
         ></HeaderSimple>
         <GamesProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/store" element={<Store />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+          <GenresProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/store" element={<Store />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </GenresProvider>
         </GamesProvider>
       </div>
     </MantineProvider>

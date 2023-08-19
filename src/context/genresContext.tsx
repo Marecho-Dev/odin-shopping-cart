@@ -6,7 +6,7 @@ type GenresProviderProps = {
 };
 
 type GenresContextType = {
-  data: any;
+  genres: any;
   loading: boolean;
   error: any;
 };
@@ -22,10 +22,10 @@ export function useGenres() {
   return context;
 }
 
-export function GamesProvider({ children }: GenresProviderProps) {
-  const { data, loading, error } = useFetchGenres();
+export function GenresProvider({ children }: GenresProviderProps) {
+  const { genres, loading, error } = useFetchGenres();
   return (
-    <GenresContext.Provider value={{ data, loading, error }}>
+    <GenresContext.Provider value={{ genres, loading, error }}>
       {children}
     </GenresContext.Provider>
   );

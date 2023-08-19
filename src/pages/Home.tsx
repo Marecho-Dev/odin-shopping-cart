@@ -5,7 +5,7 @@ import { NetflixCarousel } from "../components/NetflixCarousel";
 import "../pages/Home.css";
 import { GameCard } from "../components/GameCard";
 import { useGames } from "../context/gameContext";
-import useFetchGenres from "../hooks/useFetchGenres";
+import { useGenres } from "../context/genresContext";
 export function Home() {
   const {
     data: gamesData,
@@ -16,18 +16,13 @@ export function Home() {
     genres: genresData,
     error: genresError,
     loading: genresLoading,
-  } = useFetchGenres();
-  //   const {
-  //     genres: detailsData,
-  //     error: detailsError,
-  //     loading: detailsLoading,
-  //   } = useFetchGameDetails();
+  } = useGenres();
 
-  if (gamesLoading) {
+  if (gamesLoading && genresLoading) {
     return <div style={{ color: "white" }}>Loading...</div>; // or <Spinner />
   }
 
-  if (gamesError) {
+  if (gamesError || genresError) {
     return <div style={{ color: "white" }}>Error: {gamesError.message}</div>;
   }
 
