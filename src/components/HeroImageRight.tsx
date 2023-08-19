@@ -45,7 +45,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     color: theme.white,
     fontFamily: `${theme.fontFamily}`,
-    fontWeight: 900,
+    fontWeight: 700,
     lineHeight: 1.05,
     maxWidth: rem(500),
     fontSize: rem(48),
@@ -102,7 +102,7 @@ export function HeroImageRight({ title, description, imageUrl }) {
               </Text>{" "}
             </Title>
 
-            <Text className={classes.description} mt={30} lineClamp={10}>
+            <Text className={classes.description} lineClamp={10}>
               {description}
             </Text>
 
@@ -110,10 +110,10 @@ export function HeroImageRight({ title, description, imageUrl }) {
               uppercase
               variant="white"
               // gradient={{from:"white",to:"white"}}
-              size="xl"
+              size="lg"
               radius="xs"
-              fw={700}
-              w={100}
+              fw={600}
+              w={80}
               style={{
                 color: "black",
                 paddingLeft: 5,
@@ -122,7 +122,7 @@ export function HeroImageRight({ title, description, imageUrl }) {
                 paddingBottom: 5,
               }}
               className={classes.control}
-              mt={40}
+              mt={20}
               compact
             >
               SHOP

@@ -27,7 +27,7 @@ export function Home() {
           <Carousel.Slide>
             <HeroImageRight
               title={game.name}
-              description={game.description_raw}
+              //   description={"test"}
               imageUrl={game.background_image}
             ></HeroImageRight>
           </Carousel.Slide>
