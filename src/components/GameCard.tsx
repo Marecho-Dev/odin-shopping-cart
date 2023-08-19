@@ -1,21 +1,21 @@
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 
-export function GameCard() {
+export function GameCard({ title, description, imageUrl }) {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Card shadow="sm" padding="lg" radius="md" withBorder key={title}>
       <Card.Section>
-        <Image
-          src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-          height={180}
-          alt="Norway"
-        />
+        <Image src={imageUrl} height={180} alt={title} />
+        <Badge
+          color="pink"
+          variant="light"
+          style={{ position: "absolute", top: "10px", right: "10px" }}
+        >
+          On Sale
+        </Badge>
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>Norway Fjord Adventures</Text>
-        <Badge color="pink" variant="light">
-          On Sale
-        </Badge>
+        <Text weight={500}>{title}</Text>
       </Group>
 
       <Text size="sm" color="dimmed">

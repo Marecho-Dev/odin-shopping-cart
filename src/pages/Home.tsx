@@ -17,6 +17,11 @@ export function Home() {
     error: genresError,
     loading: genresLoading,
   } = useFetchGenres();
+  //   const {
+  //     genres: detailsData,
+  //     error: detailsError,
+  //     loading: detailsLoading,
+  //   } = useFetchGameDetails();
 
   if (gamesLoading) {
     return <div style={{ color: "white" }}>Loading...</div>; // or <Spinner />
@@ -75,36 +80,15 @@ export function Home() {
         gutterXl={50}
         style={{ margin: 20 }}
       >
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
-        <Grid.Col xs={12} md={4} lg={3}>
-          <GameCard></GameCard>
-        </Grid.Col>
+        {gamesData.map((game, index) => (
+          <Grid.Col xs={12} md={4} lg={3}>
+            <GameCard
+              title={game.name}
+              description={""}
+              imageUrl={game.background_image}
+            ></GameCard>
+          </Grid.Col>
+        ))}
       </Grid>
     </>
   );
