@@ -81,7 +81,7 @@ export function Home() {
         style={{ margin: 20 }}
       >
         {gamesData.map((game, index) => (
-          <Grid.Col xs={12} md={4} lg={3} key={game.id}>
+          <Grid.Col xs={12} md={4} sm={6} lg={3} key={game.id}>
             <GameCard
               title={game.name}
               description={""}

@@ -4,7 +4,12 @@ export function GameCard({ title, description, imageUrl }) {
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder key={title}>
       <Card.Section>
-        <Image src={imageUrl} height={180} alt={title} />
+        <Image
+          src={imageUrl}
+          height={200}
+          alt={title}
+          style={{ objectFit: "cover" }}
+        />
         <Badge
           color="pink"
           variant="light"
