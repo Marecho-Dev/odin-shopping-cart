@@ -5,6 +5,7 @@ import { Store } from "./pages/Store";
 import { About } from "./pages/About";
 import { HeaderSimple } from "./components/HeaderSimple";
 import "./App.css";
+import { GamesProvider } from "./context/gameContext";
 export default function App() {
   return (
     <MantineProvider
@@ -29,11 +30,13 @@ export default function App() {
             { link: "/About", label: "About" },
           ]}
         ></HeaderSimple>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <GamesProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/store" element={<Store />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </GamesProvider>
       </div>
     </MantineProvider>
   );

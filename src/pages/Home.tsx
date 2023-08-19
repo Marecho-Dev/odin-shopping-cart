@@ -4,14 +4,14 @@ import { Carousel } from "@mantine/carousel";
 import { NetflixCarousel } from "../components/NetflixCarousel";
 import "../pages/Home.css";
 import { GameCard } from "../components/GameCard";
-import useFetchGames from "../hooks/useFetchGames";
+import { useGames } from "../context/gameContext";
 import useFetchGenres from "../hooks/useFetchGenres";
 export function Home() {
   const {
     data: gamesData,
     error: gamesError,
     loading: gamesLoading,
-  } = useFetchGames();
+  } = useGames();
   const {
     genres: genresData,
     error: genresError,
