@@ -17,6 +17,9 @@ const useStyles = createStyles((theme) => ({
     paddingRight: theme.spacing.md,
     backgroundColor: "#1e293b",
     border: "none",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
   },
 
   inner: {
@@ -83,7 +86,7 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
   ));
 
   return (
-    <Header height={56} className={classes.header} mb={120}>
+    <Header height={56} className={classes.header}>
       <div className={classes.inner}>
         <Group>
           <Burger opened={opened} onClick={toggle} size="sm" />
