@@ -1,13 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
-import {
-  createStyles,
-  Paper,
-  Text,
-  Title,
-  useMantineTheme,
-  rem,
-} from "@mantine/core";
+import { createStyles, Paper, Text, useMantineTheme, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -31,9 +24,12 @@ const useStyles = createStyles((theme) => ({
 
   category: {
     color: theme.white,
-    opacity: 0.7,
+    opacity: 1,
     fontWeight: 700,
     textTransform: "uppercase",
+    backgroundColor: "rgba(0, 0, 0, 0.8)", // add this line
+    padding: theme.spacing.xs, // for a bit of space around the text
+    borderRadius: rem(4), // optional, for rounded edges
   },
 }));
 
