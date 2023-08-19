@@ -30,11 +30,11 @@ export function Home() {
           { maxWidth: "sm", slideSize: "100%", slideGap: 0 },
         ]}
       >
-        {data.slice(0, 5).map((game, index) => (
+        {gamesData.slice(0, 5).map((game, index) => (
           <Carousel.Slide>
             <HeroImageRight
               title={game.name}
-              //   description={"test"}
+              description={""}
               imageUrl={game.background_image}
             ></HeroImageRight>
           </Carousel.Slide>
@@ -49,7 +49,7 @@ export function Home() {
       >
         Browse By Categories
       </Text>
-      <NetflixCarousel></NetflixCarousel>
+      <NetflixCarousel data={genresData}></NetflixCarousel>
       <Text
         fw={100}
         variant="gradient"

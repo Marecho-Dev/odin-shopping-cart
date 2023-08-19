@@ -18,6 +18,7 @@ export function useFetchGenres() {
         setLoading(false);
       });
   }, []);
+
   return { genres, error, loading };
 }
 
