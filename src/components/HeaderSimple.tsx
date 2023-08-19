@@ -71,7 +71,14 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
+  const [isClicked, setIsClicked] = useState(false);
 
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 100); // 1000 milliseconds = 1 second
+  };
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -114,8 +121,9 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
             ]}
           />
           <button
+            onClick={handleClick}
             style={{
-              backgroundColor: "white",
+              backgroundColor: isClicked ? "#f0f0f0" : "white",
               width: "3rem",
               height: "3rem",
               display: "flex",
@@ -123,6 +131,9 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
               justifyContent: "center",
               borderRadius: "25px",
               position: "relative",
+              border: "none",
+              outline: "none",
+              boxShadow: isClicked ? "inset 0 0 5px rgba(0,0,0,0.3)" : "none",
             }}
           >
             <svg
