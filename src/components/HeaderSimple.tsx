@@ -1,33 +1,41 @@
-import { useState } from "react";
 import {
   createStyles,
   Header,
-  Container,
+  Autocomplete,
   Group,
   Burger,
   rem,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { IconSearch } from "@tabler/icons-react";
 import { MantineLogo } from "@mantine/ds";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   header: {
+    paddingLeft: theme.spacing.md,
+    paddingRight: theme.spacing.md,
+    backgroundColor: "#1e293b",
+    border: "none",
+  },
+
+  inner: {
+    height: rem(56),
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "100%",
   },
 
   links: {
-    [theme.fn.smallerThan("xs")]: {
+    [theme.fn.smallerThan("md")]: {
       display: "none",
     },
   },
 
-  burger: {
-    [theme.fn.largerThan("xs")]: {
+  search: {
+    [theme.fn.smallerThan("xs")]: {
       display: "none",
+      color: "black",
     },
   },
 
@@ -37,10 +45,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    color: "white",
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
@@ -51,32 +56,21 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
     },
   },
-
-  linkActive: {
-    "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
-    },
-  },
 }));
 
-interface HeaderSimpleProps {
+interface HeaderSearchProps {
   links: { link: string; label: string }[];
 }
 
-export function HeaderSimple({ links }: HeaderSimpleProps) {
+export function HeaderSimple({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <Link
+    <a
       key={link.label}
-      to={link.link}
+      href={link.link}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
@@ -85,24 +79,37 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
       }}
     >
       {link.label}
-    </Link>
+    </a>
   ));
 
   return (
-    <Header height={60} style={{ backgroundColor: "#0f172a", border: "none" }}>
-      <Container className={classes.header}>
-        <MantineLogo size={28} />
-        <Group spacing={5} className={classes.links}>
-          {items}
+    <Header height={56} className={classes.header} mb={120}>
+      <div className={classes.inner}>
+        <Group>
+          <Burger opened={opened} onClick={toggle} size="sm" />
+          <MantineLogo size={28} />
         </Group>
 
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          className={classes.burger}
-          size="sm"
-        />
-      </Container>
+        <Group>
+          <Group ml={50} spacing={5} className={classes.links}>
+            {items}
+          </Group>
+          <Autocomplete
+            className={classes.search}
+            placeholder="Search"
+            icon={<IconSearch size="1rem" stroke={1.5} />}
+            data={[
+              "React",
+              "Angular",
+              "Vue",
+              "Next.js",
+              "Riot.js",
+              "Svelte",
+              "Blitz.js",
+            ]}
+          />
+        </Group>
+      </div>
     </Header>
   );
 }
