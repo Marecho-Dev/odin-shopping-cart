@@ -1,40 +1,23 @@
 import { useState, useEffect } from "react";
 
-export function useFetchGenres(data) {
+export function useFetchGenres() {
   const [genres, setGenres] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const apiKey = import.meta.env.VITE_MY_API_KEY.trim();
 
   useEffect(() => {
-    const gamePromises = data.results.map((game) => {
-      return fetch(
-        `https://api.rawg.io/api/genres/${game.id}?key=${apiKey}`
-      ).then((response) => response.json());
-    });
-
-    Promise.all(gamePromises)
-      .then((allGenres) => {
-        // Flatten the array and filter out duplicates
-        const uniqueGenres = Array.from(
-          new Set(
-            allGenres.flatMap((game) => game.genres).map((genre) => genre.id)
-          )
-        ).map((id) =>
-          allGenres
-            .find((game) => game.genres.some((g) => g.id === id))
-            .genres.find((g) => g.id === id)
-        );
-
-        setGenres(uniqueGenres);
+    fetch(`https://api.rawg.io/api/genres?key=${apiKey}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setGenres(data.results);
         setLoading(false);
       })
       .catch((err) => {
         setError(err);
         setLoading(false);
       });
-  }, [data]);
-  console.log(data);
+  }, []);
   return { genres, error, loading };
 }
 

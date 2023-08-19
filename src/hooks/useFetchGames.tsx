@@ -10,7 +10,6 @@ export function useFetchGames() {
     fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setData(data.results);
         setLoading(false);
       })
@@ -19,7 +18,6 @@ export function useFetchGames() {
         setLoading(false);
       });
   }, []);
-  console.log(data);
   return { data, error, loading };
 }
 

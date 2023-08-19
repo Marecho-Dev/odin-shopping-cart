@@ -5,11 +5,18 @@ import { NetflixCarousel } from "../components/NetflixCarousel";
 import "../pages/Home.css";
 import { GameCard } from "../components/GameCard";
 import useFetchGames from "../hooks/useFetchGames";
+import useFetchGenres from "../hooks/useFetchGenres";
 export function Home() {
-  const { data, error, loading } = useFetchGames();
-
-  if (loading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error: {error.message}</Text>;
+  const {
+    data: gamesData,
+    error: gamesError,
+    loading: gamesLoading,
+  } = useFetchGames();
+  const {
+    genres: genresData,
+    error: genresError,
+    loading: genresLoading,
+  } = useFetchGenres();
   return (
     <>
       <Carousel

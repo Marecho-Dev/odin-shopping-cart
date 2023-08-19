@@ -1,17 +1,16 @@
 import { Text } from "@mantine/core";
-import useFetchGames from "../hooks/useFetchGames";
+import useFetchGenres from "../hooks/useFetchGenres";
 export function About() {
-  const { data, error, loading } = useFetchGames();
-
+  const { genres, error, loading } = useFetchGenres();
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error: {error.message}</Text>;
   return (
     <>
       <Text>About</Text>
       <div>
-        {data.map((game, index) => (
-          <div style={{ color: "white" }} key={game.id}>
-            {game.name} | {game.added_by_status.owned}
+        {genres.map((genre, index) => (
+          <div style={{ color: "white" }} key={genre.id}>
+            {genre.name}
           </div>
         ))}
       </div>
