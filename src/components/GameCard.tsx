@@ -23,8 +23,14 @@ export function GameCard({ title, description, imageUrl }) {
         with tours and activities on and around the fjords of Norway
       </Text>
       <center>
+        <Button variant="light" color="indigo" mr="xs" mt="md" radius="xs">
+          -
+        </Button>
         <Button variant="light" color="indigo" mt="md" radius="xs">
           ADD TO CART
+        </Button>
+        <Button variant="light" color="indigo" ml="xs" mt="md" radius="xs">
+          +
         </Button>
       </center>
     </Card>

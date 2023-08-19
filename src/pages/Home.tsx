@@ -45,7 +45,7 @@ export function Home() {
         ]}
       >
         {gamesData.slice(0, 5).map((game, index) => (
-          <Carousel.Slide>
+          <Carousel.Slide key={game.id}>
             <HeroImageRight
               title={game.name}
               description={""}
@@ -81,7 +81,7 @@ export function Home() {
         style={{ margin: 20 }}
       >
         {gamesData.map((game, index) => (
-          <Grid.Col xs={12} md={4} lg={3}>
+          <Grid.Col xs={12} md={4} lg={3} key={game.id}>
             <GameCard
               title={game.name}
               description={""}
