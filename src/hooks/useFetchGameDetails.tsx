@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useFetchGameDetails(id: any) {
+export function useFetchGameDetails(id: number) {
   const [gamesData, setGamesData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);

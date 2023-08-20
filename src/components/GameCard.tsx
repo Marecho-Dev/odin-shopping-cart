@@ -3,18 +3,15 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import useFetchGameDetails from "../hooks/useFetchGameDetails";
 
-
 type GameCardProps = {
   id: number;
   title: string;
-  description: string;
+  description_raw: string;
   imageUrl: string;
 };
 
-
-
-export function GameCard({ id, title, description, imageUrl }: GameCardProps) {
-  const { gamesData, error, loading } = useFetchGameDetails(id);
+export function GameCard({ id, title, imageUrl }: GameCardProps) {
+  const { gamesData } = useFetchGameDetails(id);
 
   const {
     getItemQuantity,
