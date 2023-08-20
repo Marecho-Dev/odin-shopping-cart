@@ -43,7 +43,7 @@ export function GameCard({ id, title, imageUrl }: GameCardProps) {
       </Group>
 
       <Text size="sm" color="dimmed" lineClamp={4}>
-        {gamesData.description_raw};
+        {gamesData?.description_raw};
       </Text>
       <Text size="xs" color="#007BFF" lineClamp={4}>
         [SHOW MORE]

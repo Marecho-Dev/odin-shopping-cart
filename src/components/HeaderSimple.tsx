@@ -13,7 +13,7 @@ import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { CartDrawer } from "./CartDrawer";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -80,7 +80,7 @@ interface HeaderSearchProps {
 }
 
 export function HeaderSimple({ links }: HeaderSearchProps) {
-  const { cartItems, openCart, closeCart, cartQuantity } = useShoppingCart();
+  const { cartQuantity } = useShoppingCart();
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
