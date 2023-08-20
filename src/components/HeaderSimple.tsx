@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { CartDrawer } from "./CartDrawer";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -82,9 +83,9 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
     setCartOpen(!cartOpen);
   };
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
-      href={link.link}
+      to={link.link}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
@@ -93,7 +94,7 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
