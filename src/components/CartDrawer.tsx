@@ -94,7 +94,7 @@ export function CartDrawer({ onOpen, onClose }) {
           <Divider size={"xs"} mt={10} />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", gap: "1rem" }}>
-              <div style={{ width: "10rem" }}>Discount:</div>
+              <div style={{ width: "6rem" }}>Discount:</div>
               <div>$0</div>
             </div>
             <div
@@ -103,7 +103,7 @@ export function CartDrawer({ onOpen, onClose }) {
                 gap: "1rem",
               }}
             >
-              <div style={{ width: "10rem" }}>Total: </div>
+              <div style={{ width: "6rem" }}>Total: </div>
               <div>${cartQuantity * 59.99}</div>
             </div>
           </div>
