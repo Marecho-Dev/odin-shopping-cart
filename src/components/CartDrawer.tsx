@@ -82,6 +82,9 @@ export function CartDrawer({ onOpen, onClose }) {
         </Table>
         <div
           style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
             marginTop: "10px",
             position: "absolute",
             right: "30px",
@@ -103,7 +106,9 @@ export function CartDrawer({ onOpen, onClose }) {
             </div>
           </div>
 
-          <Button>Checkout</Button>
+          <div style={{ alignSelf: "flex-end", marginTop: "10px" }}>
+            <Button>Checkout</Button>
+          </div>
         </div>
       </Drawer>
     </>
