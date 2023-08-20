@@ -2,6 +2,7 @@ import { Button, Grid, Text } from "@mantine/core";
 import { GameCard } from "../components/GameCard";
 import { useGames } from "../context/gameContext";
 import { useGenres } from "../context/genresContext";
+import { useEffect } from "react";
 export function Store() {
   const {
     data: gamesData,
@@ -13,6 +14,10 @@ export function Store() {
     error: genresError,
     loading: genresLoading,
   } = useGenres();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (gamesLoading && genresLoading) {
     return <div style={{ color: "white" }}>Loading...</div>; // or <Spinner />
