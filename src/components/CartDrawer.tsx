@@ -36,6 +36,7 @@ export function CartDrawer({ onOpen, onClose }) {
                 marginTop: "10px",
                 gap: "10px",
                 width: "100%",
+                position: "relative",
               }}
             >
               <div>{game.id}</div>
@@ -52,6 +53,9 @@ export function CartDrawer({ onOpen, onClose }) {
                 <TrashIcon style={{ width: "1rem", height: "1rem" }} />
               </Button>
             </div>
+            <Button style={{ position: "absolute", right: "30px" }}>
+              Checkout
+            </Button>
           </>
         ))}
       </Drawer>
