@@ -8,7 +8,7 @@ export function GameCard({ id, title, description, imageUrl }) {
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart();
-  const number = getItemQuantity(id);
+  const itemQuantity = getItemQuantity(id);
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder key={title}>
       <Card.Section>
@@ -36,35 +36,40 @@ export function GameCard({ id, title, description, imageUrl }) {
         with tours and activities on and around the fjords of Norway
       </Text>
       <center>
-        <Button
-          onClick={() => decreaseCartQuantity(id)}
-          variant="light"
-          color="indigo"
-          mr="xs"
-          mt="md"
-          radius="xs"
-        >
-          -
-        </Button>
-        <Button
-          onClick={() => increaseCartQuantity(id)}
-          variant="light"
-          color="indigo"
-          mt="md"
-          radius="xs"
-        >
-          ADD TO CART
-        </Button>
+        {itemQuantity != 0 && (
+          <Button
+            onClick={() => decreaseCartQuantity(id)}
+            variant="light"
+            color="indigo"
+            mr="xs"
+            mt="md"
+            radius="xs"
+          >
+            -
+          </Button>
+        )}
         <Button
           onClick={() => increaseCartQuantity(id)}
           variant="light"
           color="indigo"
-          ml="xs"
           mt="md"
           radius="xs"
+          disabled={itemQuantity > 0}
         >
-          +
+          {itemQuantity > 0 ? itemQuantity : "ADD TO CART"}
         </Button>
+        {itemQuantity != 0 && (
+          <Button
+            onClick={() => increaseCartQuantity(id)}
+            variant="light"
+            color="indigo"
+            ml="xs"
+            mt="md"
+            radius="xs"
+          >
+            +
+          </Button>
+        )}
       </center>
     </Card>
   );
