@@ -1,9 +1,21 @@
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import { TrashIcon } from '@heroicons/react/24/outline'
+import { TrashIcon } from "@heroicons/react/24/outline";
 import useFetchGameDetails from "../hooks/useFetchGameDetails";
-export function GameCard({ id, title, description, imageUrl }) {
-  const {gamesData, error, loading} = useFetchGameDetails(id);
+
+
+type GameCardProps = {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+};
+
+
+
+export function GameCard({ id, title, description, imageUrl }: GameCardProps) {
+  const { gamesData, error, loading } = useFetchGameDetails(id);
+
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -85,7 +97,7 @@ export function GameCard({ id, title, description, imageUrl }) {
               mt="md"
               radius="xs"
             >
-              <TrashIcon style={{width:"1rem",height:"1rem"}} />
+              <TrashIcon style={{ width: "1rem", height: "1rem" }} />
             </Button>
           )}
         </div>
