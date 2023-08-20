@@ -16,6 +16,7 @@ type ShoppingCartContext = {
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
+  setCartQuantity: (_id: number, _quantity: number) => void;
   removeFromCart: (id: number) => void;
   cartItems: CartItem[];
   cartQuantity: number;
@@ -27,6 +28,7 @@ const defaultShoppingCartValue: ShoppingCartContext = {
   getItemQuantity: (_id: number) => 0,
   increaseCartQuantity: (_id: number) => {},
   decreaseCartQuantity: (_id: number) => {},
+  setCartQuantity: (_id: number, _quantity: number) => {},
   removeFromCart: (_id: number) => {},
   cartItems: [],
   cartQuantity: 0,
@@ -96,9 +98,26 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }
     });
   }
+
+  function setCartQuantity(id: number, quantity: number) {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id) == null) {
+        return [...currItems, { id, quantity: 1 }];
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: quantity };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
   return (
     <ShoppingCartContext.Provider
       value={{
+        setCartQuantity,
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
