@@ -46,6 +46,7 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+  console.log("ShoppingCartProvider mounted");
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
@@ -55,7 +56,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   );
   useEffect(() => {}, [cartItems, cartQuantity]);
   const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }

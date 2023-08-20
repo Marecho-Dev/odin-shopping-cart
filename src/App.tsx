@@ -9,6 +9,7 @@ import { GamesProvider } from "./context/gameContext";
 import { GenresProvider } from "./context/genresContext";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 export default function App() {
+  console.log("App component rendered");
   return (
     <MantineProvider
       withGlobalStyles
@@ -30,7 +31,7 @@ export default function App() {
             <ShoppingCartProvider>
               <HeaderSimple
                 links={[
-                  { link: "/", label: "Home" },
+                  { link: "/#", label: "Home" },
                   { link: "/Store", label: "Store" },
                   { link: "/About", label: "About" },
                 ]}
