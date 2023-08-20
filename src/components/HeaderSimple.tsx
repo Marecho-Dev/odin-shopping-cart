@@ -13,7 +13,7 @@ import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { CartDrawer } from "./CartDrawer";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -80,11 +80,11 @@ interface HeaderSearchProps {
 }
 
 export function HeaderSimple({ links }: HeaderSearchProps) {
-  const { cartQuantity } = useShoppingCart();
+  const { cartItems, openCart, closeCart, cartQuantity } = useShoppingCart();
   const [opened, { toggle }] = useDisclosure(false);
-  const [setActive] = useState(links[0].link);
+  const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
-  const [isClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const getLinkClass = ({
     isActive,
@@ -106,7 +106,7 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
       key={link.label}
       to={link.link}
       className={getLinkClass}
-      onClick={() => {
+      onClick={(event) => {
         setActive(link.link);
       }}
     >
