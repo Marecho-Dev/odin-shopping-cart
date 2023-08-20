@@ -69,6 +69,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }
     });
     console.log(cartQuantity);
+    console.log(cartItems);
   }
 
   function removeFromCart(id: number) {

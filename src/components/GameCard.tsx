@@ -35,7 +35,14 @@ export function GameCard({ id, title, description, imageUrl }) {
         with tours and activities on and around the fjords of Norway
       </Text>
       <center>
-        <Button variant="light" color="indigo" mr="xs" mt="md" radius="xs">
+        <Button
+          onClick={() => decreaseCartQuantity(id)}
+          variant="light"
+          color="indigo"
+          mr="xs"
+          mt="md"
+          radius="xs"
+        >
           -
         </Button>
         <Button
