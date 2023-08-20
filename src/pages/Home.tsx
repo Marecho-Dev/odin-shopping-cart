@@ -1,4 +1,4 @@
-import { Grid, Text } from "@mantine/core";
+import { Button, Grid, Text } from "@mantine/core";
 import { HeroImageRight } from "../components/HeroImageRight";
 import { Carousel } from "@mantine/carousel";
 import { NetflixCarousel } from "../components/NetflixCarousel";
@@ -86,6 +86,11 @@ export function Home() {
           </Grid.Col>
         ))}
       </Grid>
+      <center>
+      <Button variant="default" color="lime" mb={30} radius="xs" uppercase>
+        Shop More
+      </Button>
+      </center>
     </>
   );
 }

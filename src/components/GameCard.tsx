@@ -21,11 +21,11 @@ export function GameCard({ id, title, description, imageUrl }) {
           style={{ objectFit: "cover" }}
         />
         <Badge
-          color="pink"
+          color="green"
           variant="light"
           style={{ position: "absolute", top: "10px", right: "10px" }}
         >
-          On Sale
+          $49.99
         </Badge>
       </Card.Section>
 
