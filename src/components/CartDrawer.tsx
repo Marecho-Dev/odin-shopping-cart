@@ -43,7 +43,12 @@ export function CartDrawer({ onOpen, onClose }) {
               <div>{game.quantity}</div>
               <div>-</div>
               <div>${game.quantity * 59.99}</div>
-              <Button variant="light" color="red" radius="xs">
+              <Button
+                onClick={() => removeFromCart(game.id)}
+                variant="light"
+                color="red"
+                radius="xs"
+              >
                 <TrashIcon style={{ width: "1rem", height: "1rem" }} />
               </Button>
             </div>
