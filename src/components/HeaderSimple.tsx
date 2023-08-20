@@ -14,6 +14,7 @@ import { MantineLogo } from "@mantine/ds";
 import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { CartDrawer } from "./CartDrawer";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -70,17 +71,15 @@ interface HeaderSearchProps {
 }
 
 export function HeaderSimple({ links }: HeaderSearchProps) {
-  const { cartItems, openCart, cartQuantity } = useShoppingCart();
+  const { cartItems, openCart, closeCart, cartQuantity } = useShoppingCart();
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
   const [isClicked, setIsClicked] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(!isClicked);
-    setTimeout(() => {
-      setIsClicked(false);
-    }, 100); // 1000 milliseconds = 1 second
+    setCartOpen(!cartOpen);
   };
   const items = links.map((link) => (
     <a
@@ -165,6 +164,12 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
           </button>
         </Group>
       </div>
+      {cartOpen && (
+        <CartDrawer
+          onOpen={cartOpen}
+          onClose={() => setCartOpen(false)}
+        ></CartDrawer>
+      )}
     </Header>
   );
 }

@@ -1,24 +1,23 @@
-import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button, Group } from '@mantine/core';
+import { useDisclosure } from "@mantine/hooks";
+import { Drawer, Button, Group } from "@mantine/core";
 
-export function CartDrawer() {
-  const [opened, { open, close }] = useDisclosure(false);
+export function CartDrawer({ onOpen, onClose }) {
+  // const [{ open, close }] = useDisclosure(false);
 
   return (
     <>
       <Drawer
-        opened={opened}
-        position='right'
-        onClose={close}
-        title="Authentication"
-        transitionProps={{ transition: 'rotate-left', duration: 150, timingFunction: 'linear' }}
-      >
-        {/* Drawer content */}
-      </Drawer>
-
-      <Group position="center">
-        <Button onClick={open}>Open Drawer</Button>
-      </Group>
+        opened={onOpen}
+        position="right"
+        onClose={onClose}
+        title="Shopping Cart"
+        transitionProps={{
+          transition: "rotate-left",
+          duration: 150,
+          timingFunction: "linear",
+        }}
+        style={{ zIndex: "1010", position: "relative" }}
+      ></Drawer>
     </>
   );
 }
