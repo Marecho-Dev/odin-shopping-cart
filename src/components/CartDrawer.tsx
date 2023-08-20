@@ -11,6 +11,7 @@ export function CartDrawer({ onOpen, onClose }) {
     decreaseCartQuantity,
     removeFromCart,
     cartItems,
+    cartQuantity,
   } = useShoppingCart();
   const {
     data: gamesData,
@@ -79,16 +80,31 @@ export function CartDrawer({ onOpen, onClose }) {
             ))}
           </tbody>
         </Table>
-
-        <Button
+        <div
           style={{
             marginTop: "10px",
             position: "absolute",
             right: "30px",
           }}
         >
-          Checkout
-        </Button>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <div style={{ width: "10rem" }}>Discount:</div>
+              <div>0</div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "1rem",
+              }}
+            >
+              <div style={{ width: "10rem" }}>Total: </div>
+              <div>{cartQuantity * 59.99}</div>
+            </div>
+          </div>
+
+          <Button>Checkout</Button>
+        </div>
       </Drawer>
     </>
   );
