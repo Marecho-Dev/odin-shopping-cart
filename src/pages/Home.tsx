@@ -6,6 +6,7 @@ import "../pages/Home.css";
 import { GameCard } from "../components/GameCard";
 import { useGames } from "../context/gameContext";
 import { useGenres } from "../context/genresContext";
+import { Link } from "react-router-dom";
 export function Home() {
   const {
     data: gamesData,
@@ -87,9 +88,11 @@ export function Home() {
         ))}
       </Grid>
       <center>
-      <Button variant="default" color="lime" mb={30} radius="xs" uppercase>
-        Shop More
-      </Button>
+        <Link to="/Store">
+          <Button variant="default" color="lime" mb={30} radius="xs" uppercase>
+            Shop More
+          </Button>
+        </Link>
       </center>
     </>
   );
