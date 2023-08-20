@@ -8,6 +8,7 @@ export function GameCard({ id, title, description, imageUrl }) {
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart();
+  const number = getItemQuantity(id);
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder key={title}>
       <Card.Section>
@@ -54,7 +55,14 @@ export function GameCard({ id, title, description, imageUrl }) {
         >
           ADD TO CART
         </Button>
-        <Button variant="light" color="indigo" ml="xs" mt="md" radius="xs">
+        <Button
+          onClick={() => increaseCartQuantity(id)}
+          variant="light"
+          color="indigo"
+          ml="xs"
+          mt="md"
+          radius="xs"
+        >
           +
         </Button>
       </center>
