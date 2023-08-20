@@ -15,7 +15,7 @@ import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { CartDrawer } from "./CartDrawer";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -65,6 +65,16 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
     },
   },
+
+  linkActive: {
+    // your styles for the active link
+    fontWeight: "bold", // example style for active link
+    color:
+      theme.colorScheme === "light"
+        ? theme.colors.gray[0]
+        : theme.colors.dark[6],
+    // ^ This is just an example, adjust based on your desired look for active links
+  },
 }));
 
 interface HeaderSearchProps {
@@ -78,23 +88,32 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
   const { classes, cx } = useStyles();
   const [isClicked, setIsClicked] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const getLinkClass = ({
+    isActive,
+    isPending,
+  }: {
+    isActive: boolean;
+    isPending: boolean;
+  }) => {
+    if (isPending) return "pending";
+    if (isActive) return cx(classes.linkActive);
+    return cx(classes.link);
+  };
 
   const handleClick = () => {
     setCartOpen(!cartOpen);
   };
   const items = links.map((link) => (
-    <Link
+    <NavLink
       key={link.label}
       to={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
+      className={getLinkClass}
       onClick={(event) => {
         setActive(link.link);
       }}
     >
       {link.label}
-    </Link>
+    </NavLink>
   ));
 
   return (
