@@ -5,10 +5,25 @@ type ShoppingCartProviderProps = {
 };
 
 type ShoppingCartContext = {
+  openCart: () => void;
+  closeCart: () => void;
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  cartItems: CartItem[];
+  cartQuantity: number;
+};
+
+const defaultShoppingCartValue: ShoppingCartContext = {
+  openCart: () => {},
+  closeCart: () => {},
+  getItemQuantity: (_id: number) => 0,
+  increaseCartQuantity: (_id: number) => {},
+  decreaseCartQuantity: (_id: number) => {},
+  removeFromCart: (_id: number) => {},
+  cartItems: [],
+  cartQuantity: 0,
 };
 
 type CartItem = {
@@ -16,19 +31,30 @@ type CartItem = {
   quantity: number;
 };
 
-const ShoppingCartContext = createContext({});
+const ShoppingCartContext = createContext<ShoppingCartContext>(
+  defaultShoppingCartValue
+);
 
 export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  const cartQuantity = cartItems.reduce(
+    (quantity, items) => items.quantity + quantity,
+    0
+  );
+
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(true);
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
   function increaseCartQuantity(id: number) {
+    console.log("calling increase");
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }];
@@ -42,9 +68,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         });
       }
     });
+    console.log(cartQuantity);
   }
 
-  function removeFromtCart(id: number) {
+  function removeFromCart(id: number) {
     setCartItems((currItems) => {
       return currItems.filter((item) => item.id !== id);
     });
@@ -70,7 +97,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
-        removeFromtCart,
+        removeFromCart,
+        openCart,
+        closeCart,
+        cartItems,
+        cartQuantity,
       }}
     >
       {children}

@@ -78,6 +78,7 @@ export function Home() {
         {gamesData.map((game, index) => (
           <Grid.Col xs={12} md={4} sm={6} lg={3} key={game.id}>
             <GameCard
+              id={game.id}
               title={game.name}
               description={""}
               imageUrl={game.background_image}

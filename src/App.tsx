@@ -7,14 +7,8 @@ import { HeaderSimple } from "./components/HeaderSimple";
 import "./App.css";
 import { GamesProvider } from "./context/gameContext";
 import { GenresProvider } from "./context/genresContext";
-import { useEffect } from "react";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 export default function App() {
-  useEffect(() => {
-    console.log("App mounted");
-    return () => {
-      console.log("App unmounted");
-    };
-  }, []);
   return (
     <MantineProvider
       withGlobalStyles
@@ -31,20 +25,22 @@ export default function App() {
       }}
     >
       <div style={{ backgroundColor: "#020617", minHeight: "100vh" }}>
-        <HeaderSimple
-          links={[
-            { link: "/", label: "Home" },
-            { link: "/Store", label: "Store" },
-            { link: "/About", label: "About" },
-          ]}
-        ></HeaderSimple>
         <GamesProvider>
           <GenresProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/store" element={<Store />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
+            <ShoppingCartProvider>
+              <HeaderSimple
+                links={[
+                  { link: "/", label: "Home" },
+                  { link: "/Store", label: "Store" },
+                  { link: "/About", label: "About" },
+                ]}
+              ></HeaderSimple>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/store" element={<Store />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </ShoppingCartProvider>
           </GenresProvider>
         </GamesProvider>
       </div>

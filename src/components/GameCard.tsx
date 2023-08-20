@@ -1,6 +1,13 @@
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
-export function GameCard({ title, description, imageUrl }) {
+export function GameCard({ id, title, description, imageUrl }) {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder key={title}>
       <Card.Section>
@@ -31,7 +38,13 @@ export function GameCard({ title, description, imageUrl }) {
         <Button variant="light" color="indigo" mr="xs" mt="md" radius="xs">
           -
         </Button>
-        <Button variant="light" color="indigo" mt="md" radius="xs">
+        <Button
+          onClick={() => increaseCartQuantity(id)}
+          variant="light"
+          color="indigo"
+          mt="md"
+          radius="xs"
+        >
           ADD TO CART
         </Button>
         <Button variant="light" color="indigo" ml="xs" mt="md" radius="xs">

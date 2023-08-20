@@ -12,6 +12,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
 import { MantineLogo } from "@mantine/ds";
 import { useState } from "react";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -68,6 +69,8 @@ interface HeaderSearchProps {
 }
 
 export function HeaderSimple({ links }: HeaderSearchProps) {
+  const { openCart, cartQuantity } = useShoppingCart();
+  console.log(cartQuantity);
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
@@ -161,7 +164,7 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
                 transform: "translate(25%,25%)",
               }}
             >
-              3
+              {cartQuantity}
             </div>
           </button>
         </Group>
