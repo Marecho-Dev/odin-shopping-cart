@@ -3,6 +3,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { Button } from "@mantine/core";
 import { useGames } from "../context/gameContext";
+import { Divider } from "@mantine/core";
 export function CartDrawer({ onOpen, onClose }) {
   // const [{ open, close }] = useDisclosure(false);
   const {
@@ -90,10 +91,11 @@ export function CartDrawer({ onOpen, onClose }) {
             right: "30px",
           }}
         >
+          <Divider size={"xs"} mt={10} />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", gap: "1rem" }}>
               <div style={{ width: "10rem" }}>Discount:</div>
-              <div>0</div>
+              <div>$0</div>
             </div>
             <div
               style={{
@@ -102,7 +104,7 @@ export function CartDrawer({ onOpen, onClose }) {
               }}
             >
               <div style={{ width: "10rem" }}>Total: </div>
-              <div>{cartQuantity * 59.99}</div>
+              <div>${cartQuantity * 59.99}</div>
             </div>
           </div>
 
