@@ -24,7 +24,7 @@ export function Home() {
   }
 
   if (gamesError || genresError) {
-    return <div style={{ color: "white" }}>Error: {gamesError.message}</div>;
+    return <div style={{ color: "white" }}>Error: {gamesError?.message}</div>;
   }
 
   return (
@@ -40,7 +40,7 @@ export function Home() {
           { maxWidth: "sm", slideSize: "100%", slideGap: 0 },
         ]}
       >
-        {gamesData.slice(0, 5).map((game, index) => (
+        {gamesData?.slice(0, 5).map((game) => (
           <Carousel.Slide key={game.id}>
             <HeroImageRight
               title={game.name}
@@ -76,12 +76,12 @@ export function Home() {
         gutterXl={50}
         style={{ margin: 20 }}
       >
-        {gamesData.map((game, index) => (
+        {gamesData?.map((game) => (
           <Grid.Col xs={12} md={4} sm={6} lg={3} key={game.id}>
             <GameCard
               id={game.id}
               title={game.name}
-              description={""}
+              description={"test"}
               imageUrl={game.background_image}
             ></GameCard>
           </Grid.Col>

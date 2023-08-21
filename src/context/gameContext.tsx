@@ -1,20 +1,24 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from "react";
+import { ReactNode, createContext, useContext } from "react";
 import useFetchGames from "../hooks/useFetchGames";
 
 type GamesProviderProps = {
   children: ReactNode;
 };
 
+type Game = {
+  id: number;
+  name: string;
+  background_image: string;
+
+  // ... other properties
+};
+
+type GamesResponse = Game[];
+
 type GamesContextType = {
-  data: any;
+  data: GamesResponse | null;
   loading: boolean;
-  error: any;
+  error: Error | null;
 };
 
 const GamesContext = createContext<GamesContextType | undefined>(undefined);

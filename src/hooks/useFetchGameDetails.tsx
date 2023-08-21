@@ -24,7 +24,7 @@ export function useFetchGameDetails(id: number) {
         setError(err);
         setLoading(false);
       });
-  }, []);
+  }, [apiKey, id]);
 
   return { gamesData, error, loading };
 }
