@@ -25,11 +25,11 @@ type ShoppingCartContext = {
 const defaultShoppingCartValue: ShoppingCartContext = {
   openCart: () => {},
   closeCart: () => {},
-  getItemQuantity: (_id: number) => 0,
-  increaseCartQuantity: (_id: number) => {},
-  decreaseCartQuantity: (_id: number) => {},
-  setCartQuantity: (_id: number, _quantity: number) => {},
-  removeFromCart: (_id: number) => {},
+  getItemQuantity: () => 0,
+  increaseCartQuantity: () => {},
+  decreaseCartQuantity: () => {},
+  setCartQuantity: () => {},
+  removeFromCart: () => {},
   cartItems: [],
   cartQuantity: 0,
 };
@@ -57,8 +57,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     0
   );
   useEffect(() => {}, [cartItems, cartQuantity]);
-  const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(false);
+  const openCart = () => setIsOpen(isOpen);
+  const closeCart = () => setIsOpen(!isOpen);
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }

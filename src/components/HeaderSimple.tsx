@@ -84,35 +84,38 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
-  const [isClicked, setIsClicked] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const getLinkClass = ({
-    isActive,
+    link,
     isPending,
   }: {
-    isActive: boolean;
+    link: string;
     isPending: boolean;
   }) => {
     if (isPending) return "pending";
-    if (isActive) return cx(classes.linkActive);
+    if (link === active) return cx(classes.linkActive);
     return cx(classes.link);
   };
 
   const handleClick = () => {
     setCartOpen(!cartOpen);
   };
-  const items = links.map((link) => (
-    <NavLink
-      key={link.label}
-      to={link.link}
-      className={getLinkClass}
-      onClick={(event) => {
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </NavLink>
-  ));
+  const items = links.map((link) => {
+    const isLinkPending = false; // You'll need to determine this based on your own conditions
+
+    return (
+      <NavLink
+        key={link.label}
+        to={link.link}
+        className={getLinkClass({ link: link.link, isPending: isLinkPending })}
+        onClick={() => {
+          setActive(link.link);
+        }}
+      >
+        {link.label}
+      </NavLink>
+    );
+  });
 
   return (
     <Header height={60} className={classes.header}>
@@ -143,7 +146,7 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
           <button
             onClick={handleClick}
             style={{
-              backgroundColor: isClicked ? "#f0f0f0" : "white",
+              backgroundColor: "white",
               width: "3rem",
               height: "3rem",
               display: "flex",
@@ -153,7 +156,7 @@ export function HeaderSimple({ links }: HeaderSearchProps) {
               position: "relative",
               border: "none",
               outline: "none",
-              boxShadow: isClicked ? "inset 0 0 5px rgba(0,0,0,0.3)" : "none",
+              boxShadow: "none",
             }}
           >
             <ShoppingCartIcon style={{ width: "1.5rem", height: "1.5rem" }} />
