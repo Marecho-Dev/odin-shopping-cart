@@ -80,7 +80,15 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeroImageRight({ title, description, imageUrl }) {
+export function HeroImageRight({
+  title,
+  description,
+  imageUrl,
+}: {
+  title: string;
+  description: string;
+  imageUrl: string;
+}) {
   const { classes } = useStyles();
 
   const dynamicStyles = {
