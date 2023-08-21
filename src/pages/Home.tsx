@@ -81,7 +81,7 @@ export function Home() {
             <GameCard
               id={game.id}
               title={game.name}
-              description={"test"}
+              description_raw={""}
               imageUrl={game.background_image}
             ></GameCard>
           </Grid.Col>
