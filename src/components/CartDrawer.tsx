@@ -4,23 +4,21 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import { Button } from "@mantine/core";
 import { useGames } from "../context/gameContext";
 import { Divider } from "@mantine/core";
-export function CartDrawer({ onOpen, onClose }) {
-  // const [{ open, close }] = useDisclosure(false);
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-    cartItems,
-    cartQuantity,
-  } = useShoppingCart();
-  const {
-    data: gamesData,
-    error: gamesError,
-    loading: gamesLoading,
-  } = useGames();
 
-  const gamesDictionary = gamesData.reduce((acc, game) => {
+export function CartDrawer({
+  onOpen,
+  onClose,
+}: {
+  onOpen: boolean;
+  onClose: () => void;
+}) {
+  // const [{ open, close }] = useDisclosure(false);
+  const { removeFromCart, cartItems, cartQuantity } = useShoppingCart();
+  const { data: gamesData } = useGames();
+
+  const gamesDictionary = gamesData?.reduce<{
+    [key: number]: (typeof gamesData)[0];
+  }>((acc, game) => {
     acc[game.id] = game;
     return acc;
   }, {});
@@ -62,7 +60,7 @@ export function CartDrawer({ onOpen, onClose }) {
                   }}
                 > */}
                 <tr key={index}>
-                  <th>{gamesDictionary[game.id].name}</th>
+                  <th>{gamesDictionary?.[game.id]?.name}</th>
                   <th>{game.quantity}</th>
                   <th>${game.quantity * 59.99}</th>
                   <th>
